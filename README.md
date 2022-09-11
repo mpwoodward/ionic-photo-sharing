@@ -3,7 +3,10 @@ From tutorial https://www.youtube.com/watch?v=jHy1whzDk1s
 
 My version of the excellent tutorial by Diligent Dev.
 
-The only major deviation is I'm using the Firebase V9 modular SDK so the syntax and how things are imported and used is a bit different.
+Some differences from the tutorial since it's a couple of years old:
+ 1. I'm using the Firebase V9 modular SDK so the syntax and how things are imported and used is a bit different
+ 1. The Capacitor Camera API has been updated so the imports and syntax are a bit different
+ 1. I added the Capacitor PWA Elements (https://capacitorjs.com/docs/web/pwa-elements) so the camera could be used in the browser for testing
 
 ## Configuration
 
