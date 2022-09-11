@@ -1,0 +1,7 @@
+{
+  "name": "ionic-photo-sharing",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
