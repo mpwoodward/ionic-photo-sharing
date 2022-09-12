@@ -3,8 +3,11 @@ import App from './App.vue'
 import router from './router';
 import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
+import { getStorage } from 'firebase/storage'
 
 import { IonicVue } from '@ionic/vue'
+
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css'
@@ -38,13 +41,23 @@ const firebaseApp = initializeApp(firebaseConfig)
 
 export const auth = getAuth()
 export const db = getFirestore(firebaseApp)
+export const storage = getStorage(firebaseApp)
 
-const app = createApp(App)
-  .use(IonicVue)
-  .use(router)
+let app: any
 
-//const analytics = getAnalytics(fbApp);
+auth.onAuthStateChanged(async user => {
+  if (!app) {
+    app = createApp(App)
+    .use(IonicVue)
+    .use(router)
   
-router.isReady().then(() => {
-  app.mount('#app');
-});
+    //const analytics = getAnalytics(fbApp);
+    
+    router.isReady().then(() => {
+      app.mount('#app')
+    })
+
+    defineCustomElements(window)
+  }
+})
+

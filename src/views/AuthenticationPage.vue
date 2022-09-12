@@ -79,7 +79,7 @@ import { auth, db } from '@/main'
 import { reactive, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@firebase/auth'
-import { collection, addDoc } from '@firebase/firestore'
+import { doc, setDoc } from '@firebase/firestore'
 
 enum AuthMode {
   SignIn,
@@ -136,8 +136,7 @@ export default defineComponent({
         }
 
         const authRes = await createUserWithEmailAndPassword(auth, email, password)
-        const docRef = await addDoc(collection(db, 'users'), {
-          uid: authRes.user?.uid,
+        await setDoc(doc(db, 'users', authRes.user?.uid), {
           name,
           email,
         })
