@@ -17,8 +17,11 @@ $RECYCLE.BIN/
 log.txt
 npm-debug.log*
 firebaseConfig.ts
+googleMapsConfig.ts
 android
 ios
+
+.env.local
 
 /.idea
 /.ionic
